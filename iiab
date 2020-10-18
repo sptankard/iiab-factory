@@ -51,6 +51,8 @@ CONFDIR=/etc/iiab
 FLAGDIR=$CONFDIR/install-flags
 APTPATH=/usr/bin    # Avoids problematic /usr/local/bin/apt on Linux Mint
 
+$APTPATH/apt -y install git wget grep nano    # Ensure dependencies for this script are installed
+
 # A. Subroutine for B. and D.  Returns true (0) if username ($1) exists with password ($2)
 check_user_pwd() {
     # $meth (hashing method) is typically '6' which implies 5000 rounds
@@ -204,7 +206,6 @@ fi
 
 # H. Clone 3 IIAB repos
 echo -e "\n\nDOWNLOAD (CLONE) IIAB'S 3 KEY REPOS INTO $BASEDIR ...\n"
-$APTPATH/apt -y install git
 mkdir -p $BASEDIR
 cd $BASEDIR
 echo
